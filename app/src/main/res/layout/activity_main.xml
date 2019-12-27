@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lxins.bluetoothdemo.MainActivity">
+
+    <Button
+        android:id="@+id/open_close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_close_open"
+        android:onClick="OpenCloseClick"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/scan_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_btn"
+        android:onClick="QueryPairedBT"
+        app:layout_constraintLeft_toRightOf="@id/open_close_btn"/>
+
+    <ListView layout="@layout/my_listview"
+        android:id="@+id/bt_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/open_close_btn"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </ListView>
+</android.support.constraint.ConstraintLayout>

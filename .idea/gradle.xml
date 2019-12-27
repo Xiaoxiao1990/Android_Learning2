@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/asynctaskdemo" />
+            <option value="$PROJECT_DIR$/broadcastreceiverdemo" />
+            <option value="$PROJECT_DIR$/fileoperats" />
+            <option value="$PROJECT_DIR$/httpurlconnectiondemo" />
+            <option value="$PROJECT_DIR$/servicedemo" />
+            <option value="$PROJECT_DIR$/socketdemo" />
+            <option value="$PROJECT_DIR$/spinnerdemo" />
+            <option value="$PROJECT_DIR$/webviewdemo" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

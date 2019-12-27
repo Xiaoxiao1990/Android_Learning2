@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FileOperats</string>
+    <string name="nametitle">Please input filename:</string>
+    <string name="detailtitle">Please input content:</string>
+    <string name="btnread">Read</string>
+    <string name="btnwrite">Write</string>
+    <string name="btnclean">Clean</string>
+</resources>
