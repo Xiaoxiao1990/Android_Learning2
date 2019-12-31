@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SocketDemo</string>
+    <string name="send_btn">Send</string>
+    <string name="connect_btn">Connect</string>
+    <string name="receive_txt">Receive Msg:</string>
+    <string name="Send_msg">Send Msg:</string>
 </resources>
