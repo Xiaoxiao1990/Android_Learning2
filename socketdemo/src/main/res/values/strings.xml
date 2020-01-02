@@ -4,4 +4,8 @@
     <string name="connect_btn">Connect</string>
     <string name="receive_txt">Receive Msg:</string>
     <string name="Send_msg">Send Msg:</string>
+    <string name="receive_text_hint">Received From Server...</string>
+    <string name="send_text_hint">Please Input Message Here...</string>
+    <string name="disconnect_btn">Disconnect</string>
+    <string name="hex_or_string">hex</string>
 </resources>
