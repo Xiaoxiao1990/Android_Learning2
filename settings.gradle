@@ -1,1 +1,1 @@
-include ':app', ':spinnerdemo', ':asynctaskdemo', ':broadcastreceiverdemo', ':servicedemo', ':fileoperats', ':httpurlconnectiondemo', ':webviewdemo', ':socketdemo'
+include ':bluetooth', ':spinnerdemo', ':asynctaskdemo', ':broadcastreceiverdemo', ':localservicedemo', ':fileoperats', ':httpurlconnectiondemo', ':webviewdemo', ':socketdemo', ':wifidemo', ':remoteservicedemo'

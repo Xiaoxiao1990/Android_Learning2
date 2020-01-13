@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.method.DateKeyListener;
+import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button connect_btn;
     private Button send_btn;
     private CheckBox hex_or_string;
+    private boolean send_data_format = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     socketClient.disconnect();
                     connect_btn.setText(R.string.connect_btn);
                     connection_state = false;
+                    socketClient = null;
                 } else {
-
+                    socketClient = new SocketClient(serverIP, serverPort, MainActivity.this);
                     socketClient.connect();
                     Toast.makeText(MainActivity.this, "Server[" + serverIP + ":" + serverPort + "]", Toast.LENGTH_SHORT).show();
                     connection_state = true;
@@ -64,8 +68,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.send_btn:
                 if (connection_state) {
-                    socketClient.send("OK!");
-                    Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                    String msg;
+                    if (send_data_format) {
+                        msg = hexStringToString(sendMsg.getText().toString());
+                    } else {
+                        msg = sendMsg.getText().toString();
+                    }
+
+                    socketClient.send(msg);
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Do not connected!", Toast.LENGTH_SHORT).show();
                 }
@@ -73,8 +84,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.hex_or_string:
                 if (hex_or_string.isChecked()) {
                     Toast.makeText(MainActivity.this, "Hex", Toast.LENGTH_SHORT).show();
+                    send_data_format = true;
+                    String editable = sendMsg.getText().toString();
+                    String regEx = "[^a-fA-F0-9]";  //只能输入字母或数字
+                    Pattern p = Pattern.compile(regEx);
+                    Matcher m = p.matcher(editable);
+                    String str = m.replaceAll("").trim();    //删掉不是字母或数字的字符
+                    if (!editable.equals(str)) {
+                        sendMsg.setText(str);  //设置EditText的字符
+                        sendMsg.setSelection(str.length()); //因为删除了字符，要重写设置新的光标所在位置
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "String", Toast.LENGTH_SHORT).show();
+                    send_data_format = false;
                 }
 
                 sendMsg.setSelection(sendMsg.getText().length());
@@ -100,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void afterTextChanged(Editable s) {
                 serverIP = editTextIP.getText().toString();
+                if (serverIP.equals("")) {
+                    serverIP = "192.168.1.163";
+                }
             }
         });
 
@@ -118,7 +143,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void afterTextChanged(Editable s) {
-                serverPort = Integer.parseInt(editTextPort.getText().toString());
+                String port = editTextPort.getText().toString();
+                if (port.equals("")) {
+                    port = "6666";
+                }
+                serverPort = Integer.parseInt(port);
             }
         });
 
@@ -129,8 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             connect_btn.setText(R.string.connect_btn);
         }
-
-        socketClient = new SocketClient(serverIP, serverPort, MainActivity.this);
 
         connect_btn.setOnClickListener(this);
 
@@ -149,7 +176,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (send_data_format) {
+                    String editable = sendMsg.getText().toString();
+                    String regEx = "[^a-fA-F0-9]";  //只能输入字母或数字
+                    Pattern p = Pattern.compile(regEx);
+                    Matcher m = p.matcher(editable);
+                    String str = m.replaceAll("").trim();    //删掉不是字母或数字的字符
+                    if (!editable.equals(str)) {
+                        sendMsg.setText(str);  //设置EditText的字符
+                        sendMsg.setSelection(str.length()); //因为删除了字符，要重写设置新的光标所在位置
+                    }
+                }
             }
 
             @Override
@@ -168,5 +205,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return m.replaceAll("").trim();
+    }
+
+
+    /**
+     * 字符串转换为16进制字符串
+     *
+     * @param s
+     * @return
+     */
+    public static String stringToHexString(String s) {
+        String str = "";
+        for (int i = 0; i < s.length(); i++) {
+            int ch = (int) s.charAt(i);
+            String s4 = Integer.toHexString(ch);
+            str = str + s4;
+        }
+        return str;
+    }
+
+    /**
+     * 16进制字符串转换为字符串
+     *
+     * @param s
+     * @return
+     */
+    public static String hexStringToString(String s) {
+        if (s == null || s.equals("")) {
+            return null;
+        }
+        s = s.replace(" ", "");
+        byte[] baKeyword = new byte[s.length() / 2];
+        for (int i = 0; i < baKeyword.length; i++) {
+            try {
+                baKeyword[i] = (byte) (0xff & Integer.parseInt(
+                        s.substring(i * 2, i * 2 + 2), 16));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            s = new String(baKeyword, "gbk");
+            new String();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return s;
     }
 }

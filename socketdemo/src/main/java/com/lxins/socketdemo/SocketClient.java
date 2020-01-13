@@ -67,7 +67,7 @@ public class SocketClient {
         public void run() {
             try {
                 Socket socket = new Socket(host, port);
-                socket.setSoTimeout(10000);
+                //socket.setSoTimeout(10000);
                 printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
                 receiveMsg();

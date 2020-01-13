@@ -3,15 +3,18 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BluetoothDemo.iml" filepath="$PROJECT_DIR$/BluetoothDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Andriod\temp\BluetoothDemo\bluetooth\app.iml" filepath="E:\Andriod\temp\BluetoothDemo\bluetooth\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" filepath="$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bluetooth/bluetooth.iml" filepath="$PROJECT_DIR$/bluetooth/bluetooth.iml" />
       <module fileurl="file://$PROJECT_DIR$/broadcastreceiverdemo/broadcastreceiverdemo.iml" filepath="$PROJECT_DIR$/broadcastreceiverdemo/broadcastreceiverdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/fileoperats/fileoperats.iml" filepath="$PROJECT_DIR$/fileoperats/fileoperats.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpurlconnectiondemo/httpurlconnectiondemo.iml" filepath="$PROJECT_DIR$/httpurlconnectiondemo/httpurlconnectiondemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/servicedemo/servicedemo.iml" filepath="$PROJECT_DIR$/servicedemo/servicedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/localservicedemo/localservicedemo.iml" filepath="$PROJECT_DIR$/localservicedemo/localservicedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/remoteservicedemo/remoteservicedemo.iml" filepath="$PROJECT_DIR$/remoteservicedemo/remoteservicedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/socketdemo/socketdemo.iml" filepath="$PROJECT_DIR$/socketdemo/socketdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spinnerdemo/spinnerdemo.iml" filepath="$PROJECT_DIR$/spinnerdemo/spinnerdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/webviewdemo/webviewdemo.iml" filepath="$PROJECT_DIR$/webviewdemo/webviewdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wifidemo/wifidemo.iml" filepath="$PROJECT_DIR$/wifidemo/wifidemo.iml" />
     </modules>
   </component>
 </project>

@@ -8,15 +8,17 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/asynctaskdemo" />
+            <option value="$PROJECT_DIR$/bluetooth" />
             <option value="$PROJECT_DIR$/broadcastreceiverdemo" />
             <option value="$PROJECT_DIR$/fileoperats" />
             <option value="$PROJECT_DIR$/httpurlconnectiondemo" />
-            <option value="$PROJECT_DIR$/servicedemo" />
+            <option value="$PROJECT_DIR$/localservicedemo" />
+            <option value="$PROJECT_DIR$/remoteservicedemo" />
             <option value="$PROJECT_DIR$/socketdemo" />
             <option value="$PROJECT_DIR$/spinnerdemo" />
             <option value="$PROJECT_DIR$/webviewdemo" />
+            <option value="$PROJECT_DIR$/wifidemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
